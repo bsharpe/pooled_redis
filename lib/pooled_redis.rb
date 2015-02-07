@@ -29,7 +29,7 @@ module PooledRedis
   # Override this method unless using Rails.
   def redis_config
     @redis_config = begin
-      config = Rails.application.config_for(:redis)
+      config = YAML.load_file(Rails.root.join("config","redis.yml"))[Rails.env]
       config[:driver] ||= :hiredis if defined?(Hiredis)
       config[:logger] = Rails.logger if Rails.env.development?
       config
