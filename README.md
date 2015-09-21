@@ -10,23 +10,21 @@ You can add this methods to custom modules.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pooled_redis'
+gem 'pooled_redis', github: 'bsharpe/pooled_redis'
 ```
 
 ## Usage
 
-- Add `redis` section to your `database.yml` with options supported by `Redis.new`
+- Add a `redis.yml` file to your `config` folder with options supported by `Redis.new`
 
 ```yml
 development:
-  redis:
-    db: 2
+  db: 2
 production:
-  redis:
-    url: 'redis://mymaster'
-    sentinels:
-      - host: host
-      - host: other
+  url: 'redis://mymaster'
+  sentinels:
+    - host: host
+    - host: other
 ```
 
 - You can also provide `pool` & `timeout` values for ConnectionPool.
@@ -63,6 +61,6 @@ Storage.redis_pool.with { |r| r.get :some_key }
 Storage.redis.get :some_key
 ```
 
-# Licence
+# License
 
 MIT
