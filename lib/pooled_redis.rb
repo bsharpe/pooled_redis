@@ -1,5 +1,6 @@
 require 'pooled_redis/version'
 require 'connection_pool'
+require 'redis'
 
 ConnectionPool.class_eval do
   # Wraps pool and proxies every method to checked out connection.
